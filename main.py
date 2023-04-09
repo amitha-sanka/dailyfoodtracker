@@ -17,15 +17,13 @@ from api.user import user_api # Blueprint import api definition
 from api.player import player_api
 
 
-# setup App pages
-from projects.projects import app_projects # Blueprint directory import projects definition
-
 # register URIs
 app.register_blueprint(joke_api) # register api routes
 app.register_blueprint(covid_api) # register api routes
 app.register_blueprint(user_api) # register api routes
 app.register_blueprint(player_api)
-app.register_blueprint(app_projects) # register app pages
+# app.register_blueprint(food_api) 
+
 
 @app.errorhandler(404)  # catch for URL not found
 def page_not_found(e):
@@ -35,10 +33,6 @@ def page_not_found(e):
 @app.route('/')  # connects default URL to index() function
 def index():
     return render_template("index.html")
-
-@app.route('/stub/')  # connects /stub/ URL to stub() function
-def stub():
-    return render_template("stub.html")
 
 @app.before_first_request
 def activate_job():  # activate these items 
