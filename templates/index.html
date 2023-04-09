@@ -1,16 +1,25 @@
 {% extends "layouts/base.html" %}
 {% set project = "Home" %}
 
-{% block content %}
+{% block body %}
     <!-- Start of body content specific to page -->
     <div class="px-5 py-5 mx-auto">
-        <h1 class="text-white"><strong>Python Home Page</strong></h1>
+        <form class = "grid" action = "/result" method ="POST">
+            <center>
+               {% if name %} 
+               <h3 style="color: black;">Hello {{ studObj }}, </h3>
+               {% endif %}
+            </center>
+
+            <label for = "Name">Enter name of food :{{ studObj }}</label>
+            <input type="text" name="name" id="name">
+            <center><input type="Submit" class="file_submit" id ="name"></center>
+
+        </form>
+        <h1> FOOD {{ studObj }}</h1>
+        <!-- <h1 class="text-white"><strong>Python Home Page</strong></h1>
         <h1>Daily Food Intake Tracker</h1>
         <input type="text" placeholder="Search..">
-        <button> Search </button>
-        {% with nutrition = getNutritionInfo("Oreo") %}
-        <!-- {% nutrition = getNutritionInfo("Oreo") %} -->
-            <p>{{nutrition}}</p>
-        {% endwith %}
+        <button> Search </button> -->
     </div>
 {% endblock %}
