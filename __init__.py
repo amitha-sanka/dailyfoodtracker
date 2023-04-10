@@ -39,4 +39,3 @@ def getNutritionInfo():
 app.jinja_env.globals.update(getNutritionInfo=getNutritionInfo)
 
 getNutritionInfo()
-print("hello world")
