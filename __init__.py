@@ -27,12 +27,10 @@ def getNutritionInfo():
     }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
-    # foodFromResponse = json.dumps(response.text, indent=4, cls=FoodEncoder)
 
     studObj = json.loads(response.text, object_hook=customFoodDecoder)
 
-    # print(studObj.maxScore)
-    # # print(foodFromResponse.maxScore)
+  
     print(studObj)
     return dict(food=studObj)
 
