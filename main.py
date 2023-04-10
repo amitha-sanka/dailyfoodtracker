@@ -51,8 +51,9 @@ app.config.from_object(__name__)
 Session(app)
 @app.route('/')
 def home():
-    session["calorieTotal"]=0
+    session["calorieTotal"] = 0
     # add a list here by doing session[<name of food list>] and set it equal to empty list
+    session["nameFoodList"] = []
     return render_template("index.html", studObj = 0)
 
 # @app.route("/home")
@@ -68,10 +69,14 @@ def result():
     if not "calorieTotal" in session:
         session["calorieTotal"] = 0
     # add if statement to check if <food name> is in session or not, in if statement repeat the code in home() 
+    if not "nameFoodList" in session: 
+        session["nameFoodList"] = []
+    
+    session["nameFoodList"].append((output["currentFood"], currentFood[0].calories))
+
     session["calorieTotal"] = session["calorieTotal"] + currentFood[0].calories
     
-
-    return render_template("index.html", currentFood = session["calorieTotal"])
+    return render_template("index.html", currentFood = session["calorieTotal"], calorieList=session["calorieList"], foodList = session["nameFoodList"])
 
 # if __name__ == '__main__':
 #     app.run(debug=True,port=8086)

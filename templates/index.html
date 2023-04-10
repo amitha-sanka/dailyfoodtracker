@@ -1,25 +1,42 @@
 {% extends "layouts/base.html" %}
 {% set project = "Home" %}
 
+
 {% block body %}
     <!-- Start of body content specific to page -->
     <div class="px-5 py-5 mx-auto">
         <form class = "grid" action = "/result" method ="POST">
-            <center>
-               {% if currentFood %} 
-               <h3 style="color: black;">Total Calories {{ currentFood }}, </h3>
-               {% endif %}
-            </center>
 
-            <label for = "currentFood">Enter name of food :{{ studObj }}</label>
+            <label for = "currentFood">Enter name of food:</label>
             <input type="text" name="currentFood" id="currentFood">
-            <center><input type="Submit" class="file_submit" id ="currentFood"></center>
+            <input type="Submit" class="file_submit" id ="currentFood">
 
         </form>
-        <h1> FOOD {{ studObj }}</h1>
-        <!-- <h1 class="text-white"><strong>Python Home Page</strong></h1>
-        <h1>Daily Food Intake Tracker</h1>
-        <input type="text" placeholder="Search..">
-        <button> Search </button> -->
+        <h2> Food List</h2>
+        <table>
+        <tr>
+            <th>Name of Food</th>
+            <th>Calories of Food</th>
+        </tr>
+        {% for food in foodList %}
+        <tr>
+            <td>{{ food[0] }}</td>
+            <td>{{ food[1] }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        <center>
+            {% if currentFood %} 
+            <h3 style="color: rgb(252, 185, 218);">Total Calories: {{ currentFood }} </h3>
+            {% endif %}
+        </center>
+
+        <!-- <table>
+        {% for calorie in calorieList %}
+        <tr>
+            <td>{{ calorie }}</td>
+        </tr>
+        {% endfor %}
+        </table> -->
     </div>
 {% endblock %}
