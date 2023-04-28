@@ -21,6 +21,7 @@ This HTML is setup as as a Jinja2 layout, coders use layouts for:
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+
     .navbar {
         position: static;
         z-index: 9999;
@@ -33,8 +34,6 @@ This HTML is setup as as a Jinja2 layout, coders use layouts for:
         cursor: pointer;
         color: #f899b7;
     }
-    {% block style %}
-    {% endblock %}
     </style>
 
     <title>{{ basename }} | {{ project }} </title>
@@ -56,3 +55,4 @@ This HTML is setup as as a Jinja2 layout, coders use layouts for:
 {% endblock %}
 
 </html>
+
